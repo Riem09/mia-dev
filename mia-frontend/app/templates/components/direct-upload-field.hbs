@@ -1,0 +1,10 @@
+{{#if inFlight}}
+    <i class="ajax-loader"></i> Uploading {{uploadedFilename}}...
+{{else}}
+    {{#if uploadedFilename}}
+        Uploaded: {{uploadedFilename}} <a href="#" {{action "selectFile"}}>Change</a>
+    {{else}}
+        <a href="#" {{action "selectFile"}}>{{label}}</a>
+    {{/if}}
+{{/if}}
+{{input type='hidden' value=s3_key name=name }}

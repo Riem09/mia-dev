@@ -1,0 +1,57 @@
+<div class="left">
+
+  {{#link-to 'application' class='logo'}}
+    <i class="icon-logo"></i>
+  {{/link-to}}
+
+  <ul class="main-nav top-level-list">
+    <li>
+      {{#link-to 'search' (query-params motif_ids=null keywords=null)}}
+        Search<i class="icon-search"></i>
+      {{/link-to}}
+    </li>
+    <li>
+      {{#link-to 'discover'}}
+        Discover<i class="icon-discover"></i>
+      {{/link-to}}
+    </li>
+    <li>
+      {{#link-to 'motifs'}}
+        Motifs<i class="icon-motifs"></i>
+      {{/link-to}}
+    </li>
+  </ul>
+
+</div>
+
+
+<div class="right">
+
+  <ul class="top-level-list">
+    {{#if user}}
+      <li>
+        {{#link-to 'videos.new' class='add-video'}}<i class="icon-add-circle"></i>{{/link-to}}
+      </li>
+      <li>
+        {{#rl-dropdown-container class="dropdown"}}
+          {{#rl-dropdown-toggle tagName='a'}}
+            {{user-avatar user=user}}
+          {{/rl-dropdown-toggle}}
+          {{#rl-dropdown tagName="ul" class="dropdown-menu" closeOnChildClick="a:link"}}
+            <li>{{#link-to 'users.show' user.id}}My Videos{{/link-to}}</li>
+            <li>{{link-to 'Edit Profile' 'users.edit'}}</li>
+            <li><a {{action signOut}} class='sign-out'>Sign Out</a></li>
+          {{/rl-dropdown}}
+        {{/rl-dropdown-container}}
+      </li>
+    {{else}}
+      <!--<li>
+        {{link-to 'Sign Up' 'sign-up'}}
+      </li>-->
+      <li>
+        {{link-to 'Sign In' 'sign-in' class='sign-in'}}
+      </li>
+    {{/if}}
+  </ul>
+
+</div>

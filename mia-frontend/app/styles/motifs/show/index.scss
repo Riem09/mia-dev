@@ -1,0 +1,117 @@
+.motif-show {
+  .motif-splash {
+    position: relative;
+
+    &, a:not(:hover) {
+      color: $white;
+    }
+
+    .header, .footer {
+      z-index: index($video-upload, button);
+      padding: 3.2rem;
+      padding-top: 1.6rem;
+      position: absolute;
+      left: 0;
+      width: 100%;
+
+    }
+
+    .header {
+      top: 0;
+      padding-top: 3.2rem;
+
+      h1 {
+        display: inline-block;
+        margin: 0;
+      }
+
+      .color-tag {
+        display: inline-block;
+        vertical-align: top;
+      }
+
+      .actions {
+        @include h4();
+
+        display: inline-block;
+        float: right;
+        text-transform: uppercase;
+
+        i {
+          margin-left: 0.8rem;
+        }
+      }
+    }
+
+    .footer {
+      bottom: 0;
+
+      .icon {
+        img {
+          max-width: 4.0rem;
+          max-height: 4.0rem;
+        }
+      }
+    }
+
+    .motif-letterbox {
+      .letterbox-container {
+        height: 70vh;
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  h4 {
+    color: $gray-light;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+.motif-items {
+  position: relative;
+  .motif-item {
+    color: $white;
+    float: left;
+    position: relative;
+    width: 16.66%;
+
+    > a {
+      display: block;
+    }
+
+    .title {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 1rem;
+      z-index: 3;
+
+      h3 {
+        display: inline-block;
+        margin: 0;
+        width: 16rem;
+        word-wrap: break-word;
+      }
+
+      .color-tag {
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+  }
+
+  .plus-button {
+    background-color: $charcoal;
+    position: absolute;
+    top: 7.2rem;
+    left: 15.6%;
+
+    &.no-motifs {
+      position: relative;
+      left: 0;
+      top: 0;
+    }
+  }
+}

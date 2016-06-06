@@ -1,0 +1,45 @@
+variables:
+  DOCKER_IMAGE: docker.skyrocket.is/mia/api
+  DOCKERFILE_LOCATION: ./
+  EB_APP_NAME: mia
+  EB_STAGING_ENVIRONMENT_NAME: mia-staging-api
+  EB_PROD_ENVIRONMENT_NAME: mia-staging-api
+
+stages:
+  - build
+  - deploy
+
+build-docker:
+  stage: build
+  script:
+    - docker login -e services@skyrocket.is -u skyrocket_robot -p $DOCKER_REGISTRY_PASSWORD docker.skyrocket.is
+    - docker build -t $DOCKER_IMAGE:latest $DOCKERFILE_LOCATION
+    - docker tag -f $DOCKER_IMAGE:latest $DOCKER_IMAGE:${CI_BUILD_REF_NAME#release/}
+    - docker push $DOCKER_IMAGE:${CI_BUILD_REF_NAME#release/}
+    - docker push $DOCKER_IMAGE:latest
+    - docker logout docker.skyrocket.is
+  only:
+    - /^hotfix.*$/
+    - /^release.*$/
+
+deploy-eb-staging:
+  stage: deploy
+  script:
+    - sed -i'' -e "s;%BUILD_VERSION%;${CI_BUILD_REF_NAME#release/};g" .deploy/Dockerrun.aws.json
+    - cd .deploy
+    - git add *
+    - eb init -r us-east-1 -p docker $EB_APP_NAME
+    - eb deploy --staged -l $EB_STAGING_ENVIRONMENT_NAME-${CI_BUILD_REF_NAME#release/} $EB_STAGING_ENVIRONMENT_NAME
+  only:
+    - /^release.*$/
+
+deploy-eb-production:
+  stage: deploy
+  script:
+    - sed -i'' -e "s;%BUILD_VERSION%;${CI_BUILD_TAG};g" .deploy/Dockerrun.aws.json
+    - cd .deploy
+    - git add *
+    - eb init -r us-east-1 -p docker $EB_APP_NAME
+    - eb deploy --staged -l $EB_PROD_ENVIRONMENT_NAME-${CI_BUILD_TAG} $EB_PROD_ENVIRONMENT_NAME
+  only:
+    - tags

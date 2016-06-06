@@ -1,0 +1,12 @@
+{{#mia-input errors=errors.title}}
+    {{input name='video[title]' value=title placeholder='Title'}}
+{{/mia-input}}
+{{#mia-input errors=errors.video_upload}}
+    {{direct-upload-field name='video[video_upload_attributes][source_video]' s3_key=s3_key label='Select Video'}}
+    {{#if videoUpload}}
+        <br />
+        <div class="letterbox-container">
+            {{video-upload-player videoUpload=videoUpload muted=true play=true}}
+        </div>
+    {{/if}}
+{{/mia-input}}

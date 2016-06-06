@@ -1,0 +1,23 @@
+{{top-level-nav}}
+<div class="form-container mia-main">
+    <h1>Sign In</h1>
+
+    <form {{action submit on='submit'}} class='sign-in'>
+
+        {{mia-input error=error}}
+
+        {{#mia-input}}
+            {{input type='text' placeholder='email' value=username name='email'}}
+        {{/mia-input}}
+        {{#mia-input}}
+            {{input type='password' placeholder='password' value=password name='password'}}
+        {{/mia-input}}
+
+        <p>
+            {{link-to 'Forgot your password?' 'forgot-password'}}
+        </p>
+
+        <input type="submit" value="Submit" />
+    </form>
+
+</div>

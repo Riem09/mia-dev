@@ -1,0 +1,66 @@
+.panel-medium {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: top 0.5s ease-in-out;
+  width: 100%;
+  height: 100%;
+  z-index: index($body-elements, panel);
+
+  .panel-overlay {
+    background-color: rgba($black, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.panel {
+  height: auto;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: index($body-elements, panel);
+
+  .content {
+    background: $white;
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
+
+    .panel-header {
+      $header-height: 6rem;
+
+      background-color: $white-off;
+      height: $header-height;
+      padding-right: $header-height;
+      position: relative;
+
+      .close {
+        background-color: $white;
+        color: $gray-light;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: $header-height;
+        height: $header-height;
+
+        a {
+          display: block;
+          text-align: center;
+          vertical-align: middle;
+
+          i {
+            font-size: 6.0rem;
+            font-weight: $thin;
+          }
+        }
+      }
+    }
+  }
+}

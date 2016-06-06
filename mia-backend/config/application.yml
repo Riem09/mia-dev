@@ -1,0 +1,19 @@
+aws_access_key_id: "AKIAJXCVKQDFGKLUZHNQ"
+aws_secret_access_key: "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"
+aws_region: 'us-east-1'
+aws_s3_bucket: 'mia-production'
+aws_et_pipeline_id: '1441401530349-po3w0h'
+aws_et_sns_topic_arn: 'arn:aws:sns:us-east-1:913542126995:mia-dev-et-sns'
+host: 'http://50042a58.ngrok.com'
+telestream_access_key: '0cde237168cb00cd1cb1'
+telestream_secret_key: '33c8757c75ce434cc989'
+telestream_api_host: 'api-gce.pandastream.com'
+telestream_factory_id: '966d8bde5b4cc3cc1cdff293f4db8b30'
+
+test:
+  aws_s3_bucket: 'mia-test-bucket'
+  aws_et_pipeline_id: '1442351236465-dzytyj'
+
+development:
+  aws_s3_bucket: 'mia-development'
+  aws_et_pipeline_id: '1441406068668-febe0l'

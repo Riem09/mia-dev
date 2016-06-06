@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mia</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="VVMhoUSgLHpSuA_A6lQV_4q7DQMiJqlNCK5hSNDo2k4">
+
+    {{content-for "head"}}
+
+    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/mia-frontend.css">
+    <script src="https://use.typekit.net/vye0qut.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    
+    {{content-for "head-footer"}}
+  </head>
+  <body>
+    {{content-for "body"}}
+
+    <script src="assets/vendor.js"></script>
+    <script src="assets/mia-frontend.js"></script>
+
+
+    <script type="text/my-handlebars" class="template-suggestion">
+      <div class="suggestion">
+        <div class="image-container">
+          <div class="color-tag whitespace" style="border-top-color: {{hex_color}};"></div>
+          <div class="letterbox-container">
+            {{#if image_url}}
+              <div class="image" style="background-image: url('{{image_url}}');">&nbsp;</div>
+            {{else}}
+              <div class="image">&nbsp;</div>
+            {{/if}}
+          </div>
+        </div>
+        <div class="breadcrumbs-name-container">
+          <h3>
+            {{#each path}}
+              {{name}}<i class="icon-arrow-small"></i>
+            {{/each}}
+          </h3>
+          <h2 class="sub">{{name}}</h2>
+        </div>
+      </div>
+    </script>
+
+    {{content-for "body-footer"}}
+  </body>
+</html>

@@ -1,0 +1,68 @@
+.add-motif {
+  .motif-input {
+    input {
+      padding: 0 0 0 2rem;
+      &.tt-input {
+        border: none;
+        outline: none;
+      }
+    }
+  }
+}
+.tt-cursor {
+  background: $white;
+}
+.twitter-typeahead {
+  width: 100%;
+  .tt-input {
+    width: 100%;
+  }
+}
+.tt-menu {
+    padding-left: 2rem;
+  .suggestion {
+    @include clearfix();
+    $height: 3.2rem;
+    $padding: 0.4rem;
+    padding: $padding;
+    padding-right: $padding + 4.8rem;
+    padding-left: 13rem;
+    position: relative;
+    width: auto;
+    height: 7.6rem;
+    > * {
+      vertical-align: middle;
+    }
+    &:hover {
+      background-color: rgba($gray-dark + 50, 0.9);
+      cursor: pointer;
+    }
+    h2 {
+      color: $gray-dark;
+      line-height: normal;
+      margin: 0;
+      white-space: nowrap;
+    }
+    h3 {
+      color: $gray-dark;
+      margin: 0 0 0.5rem;
+    }
+    &.tt-cursor {
+      background-color: $nav-color + 70;
+    }
+    .image-container {
+      position: absolute;
+      top: $padding;
+      left: $padding;
+      width: 11.5rem;
+      height: 7rem;
+      .color-tag {
+        font-size: 2.4rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+    }
+  }
+}

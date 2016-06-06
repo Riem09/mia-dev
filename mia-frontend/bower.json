@@ -1,0 +1,21 @@
+{
+  "name": "mia-frontend",
+  "dependencies": {
+    "ember": "~2.5.0",
+    "ember-cli-shims": "0.1.1",
+    "ember-cli-test-loader": "0.2.2",
+    "ember-qunit-notifications": "0.1.0",
+    "handlebars": "~4.0.2",
+    "jquery": "^2.1.4",
+    "js-cookie": "~2.0.3",
+    "moment": "momentjs#~2.10.6",
+    "neat": "~1.7.2",
+    "normalize.css": "3.0.3",
+    "qunit": "~1.20.0",
+    "typeahead.js": "~0.11.1",
+    "object-fit": "~0.4.2",
+    "bourbon": "^4.2.7",
+    "element-matches": "closest#^2.0.1",
+    "raf.js": "^0.0.4"
+  }
+}

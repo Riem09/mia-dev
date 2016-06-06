@@ -1,0 +1,24 @@
+{{#panel-medium}}
+  {{panel-header onClose='back'}}
+
+
+  <div class="form-container">
+
+
+    <h1>Adding a Related Motif to {{motif.name}}</h1>
+
+    {{#motif-add-opener done='doSubmit' name='motif-related' placeholder='Enter a new related motif'}}
+      Add A Related Motif
+    {{/motif-add-opener}}
+
+    {{!-- <form {{action 'doSubmit' on='submit'}} class='add-related-motif'>
+      {{#if relatedMotif}}
+        {{relatedMotif.name}}
+      {{/if}}
+      <input type="hidden" name="related_motif[motif1_id]" value="{{motif.id}}" />
+      <input type="hidden" name="related_motif[motif2_id]" value="{{relatedMotif.id}}" /> {{motif-input addMotifId='setMotif' full=true}}
+      <input class="full" type="submit" value="Add" disabled= {{disabledAttr}} />
+    </form> --}}
+  </div>
+
+{{/panel-medium}}

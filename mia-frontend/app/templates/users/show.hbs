@@ -1,0 +1,9 @@
+<h1 class="video-show-title">Your videos</h1>
+
+<div class="video-list-items">
+    {{#each model.videos as |video|}}
+        {{video-list-item video=video timeline=false}}
+    {{/each}}
+</div>
+
+{{outlet}}

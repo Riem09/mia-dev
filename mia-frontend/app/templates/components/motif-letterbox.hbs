@@ -1,0 +1,15 @@
+<div class="letterbox-container">
+  {{#if motif.video_upload.isReady}}
+    {{#scrub-overlay scrubSelector='.gradient-timeline' durationS=motif.video_upload.durationS seekTimeS=vupSeekTime stopEvents=true}}
+      {{video-upload-player videoUpload=motif.video_upload muted=muted play=true seekTime=vupSeekTime currentFraction=vupFraction playScroll=true}}
+      {{gradient-timeline seekTimeFraction=vupFraction}}
+    {{/scrub-overlay}}
+  {{else}}
+    {{#if motif.image_url}}
+      <div class="image" style={{motifImageStyle}}>&nbsp;</div>
+    {{else}}
+      <div class="image">&nbsp;</div>
+    {{/if}}
+  {{/if}}
+  {{yield}}
+</div>

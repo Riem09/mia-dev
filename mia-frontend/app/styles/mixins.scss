@@ -1,0 +1,19 @@
+@mixin mia-gradient($from: top, $to: bottom, $from-color: rgba($black, 0), $to-color: rgba($black, 1), $from-amt: 50px, $to-amt: 100%) {
+  position: relative;
+  &:before {
+    display: block;
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba($from-color, 0);
+    background: -moz-linear-gradient($from, $from-color $from-amt, $to-color $to-amt);
+    background: -webkit-gradient(left $from, left $to, color-stop($from-amt, $from-color), color-stop($to-amt, $to-color));
+    background: -webkit-linear-gradient($from, $from-color $from-amt, $to-color $to-amt);
+    background: -o-linear-gradient($from, $from-color $from-amt, $to-color $to-amt);
+    background: -ms-linear-gradient($from, $from-color $from-amt, $to-color $to-amt);
+    background: linear-gradient(to $to, $from-color $from-amt, $to-color $to-amt);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=0 );
+  }
+}

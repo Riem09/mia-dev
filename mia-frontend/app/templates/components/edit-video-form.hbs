@@ -1,0 +1,10 @@
+<form {{action "submit" on='submit'}}>
+
+        <input type="hidden" name='id' value="{{video.id}}" />
+
+        {{partial "partials/-video-form"}}
+
+        {{direct-upload-submit value='Update Video'}}
+
+</form>
+

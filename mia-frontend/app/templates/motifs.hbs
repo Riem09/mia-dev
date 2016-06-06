@@ -1,0 +1,26 @@
+{{top-level-nav}}
+
+<div class="motifs-container">
+  <div class="motif-search-bar clearfix mia-main">
+
+    {{motif-breadcrumbs motif=motif}}
+
+    <a href="#" {{action "toggleShowSearchBox"}}>
+      {{#if showSearchBox}}
+        <i class="icon-close"></i>
+      {{else}}
+        Search motifs... <i class="icon-search"></i>
+      {{/if}}
+    </a>
+  </div>
+
+  <div class="results-container">
+    {{#if showSearchBox}}
+      <div class="add-motif">
+        {{motif-input addMotifId='gotoMotif' placeholder='Enter a motif name'}}
+      </div>
+    {{/if}}
+
+    {{outlet}}
+  </div>
+</div>

@@ -1,0 +1,29 @@
+{{top-level-nav}}
+
+<div class="search-bar mia-main">
+  <ul class="search-motifs">
+    {{#each motifs as |motif|}}
+      <li>{{search/motif-item motif=motif onRemove='removeMotif'}}</li>
+    {{/each}}
+
+    <li>
+      <a href="#" {{action "toggleShowAddMotif"}}>{{#if showAddMotif}}Cancel{{else}}Add...{{/if}}</a>
+    </li>
+
+    <li class="num-of-results"><h4>{{videos.length}} Results</h4></li>
+  </ul>
+</div>
+
+<div class="results-container">
+  {{#if showAddMotif}}
+    <div class="add-motif">{{motif-input addMotifId='addMotif' placeholder='Enter a film technique'}}</div>
+  {{/if}}
+
+  <div class="video-list-items">
+    {{#each videos as |video|}}
+      {{video-list-item video=video}}
+    {{/each}}
+  </div>
+
+  {{outlet}}
+</div>

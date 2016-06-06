@@ -1,0 +1,15 @@
+<button class="btn full" type="button" {{action 'openPanel'}}>
+  {{yield}}
+</button>
+
+{{#if showPanel}}
+  {{#panel-medium}}
+    {{#panel-header onClose='closePanel' }}
+    {{/panel-header}}
+    <div class="results-container">
+      <div class="add-motif">
+        {{motif-input addMotifId='sendMotif' placeholder='Enter a film technique'}}
+      </div>
+    </div>
+  {{/panel-medium}}
+{{/if}}

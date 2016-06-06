@@ -1,0 +1,183 @@
+{{#panel-header onClose='doClose' }}
+  <div class="icons">
+    {{#each video.motifs_with_icon as |motif|}}
+      {{image-icon icon_url=motif.icon_url}}
+    {{/each}}
+  </div>
+
+  <h2>{{video.title}}
+    {{#link-to 'videos.show.edit' video.id replace=true class='edit-video' }}<i class="icon-edit"></i>{{/link-to}}
+  </h2>
+
+  {{user-date user=video.owner dateString=video.createdDateHumanized}}
+
+  <div class="counts">
+    <div class="count general">
+      <span>{{video.generalVideoMotifs.length}}</span>
+      <i class="icon-generic"></i>
+    </div>
+    <div class="count timestamped">
+      <span>{{video.timestampedVideoMotifs.length}}</span>
+      <i class="icon-timed"></i>
+    </div>
+  </div>
+
+{{/panel-header}}
+<div class="row bg-gray relative">
+  <div class="left-col">
+    {{#scrub-overlay clickTimeS=clickTime seekTimeS=seekTime hoverTimeS=hoverCurrentTime scrubSelector='.timeline' durationS=video.video_upload.durationS}}
+
+      <div class="letterbox-container">
+        <a href="#" {{action "toggle" on='click'}}>
+            {{video-upload-player videoUpload=video.video_upload autoplay=true play=play currentTime=currentTime seekTime=seekTime overlay=true startTimeMs=calcStartTimeMs endTimeMs=calcEndTimeMs muted=false}}
+        </a>
+      </div>
+
+      <div class="controls-wrapper">
+        <div class="current-time">
+          <div>
+            {{currentTimeString}} / {{durationString}}
+          </div>
+        </div>
+
+        <div class="current-motifs motif-hover" style= {{motifHoverStyle}}>
+          {{#each motifsAtCurrentTime as |vm|}}
+            <div class="current-motif">
+              <a href="#" {{action 'selectVideoMotif' vm bubbles=false}}>
+                <div class="color-tag" style="border-top-color: {{vm.motif.hex_color}};"></div> {{vm.motif.name}}
+              </a>
+            </div>
+          {{/each}}
+          <div class='video-container' style= {{motifTimelineVideoStyle}}>
+            <div class="letterbox-container">
+              {{video-upload-player videoUpload=video.video_upload play=false seekTime=motifTimelineTime overlay=false}}
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline" data-ember-action>
+          <div class="relative">
+            <div class="elapsed" style= {{elapsedPercentStyle}}></div>
+
+            <div class="video-motifs">
+              {{#each video.timestampedVideoMotifs as |videoMotif|}}
+                {{video-motif-duration videoMotif=videoMotif totalDuration=video.duration_ms action='selectVideoMotif'}}
+              {{/each}}
+              {{#if currentVideoMotifIsNew}}
+                {{video-motif-duration videoMotif=currentVideoMotif totalDuration=video.duration_ms}}
+              {{/if}}
+            </div>
+
+          </div>
+        </div>
+
+        {{#if currentVideoMotif}}
+          {{#if editingCurrentVideoMotif}}
+            <div class="scrubber" {{action "toggle" on="mouseDown"}}>
+              {{scrub-handle fraction=startFraction upperLimit=endFraction}} {{scrub-handle fraction=endFraction lowerLimit=startFraction}}
+            </div>
+          {{/if}}
+        {{/if}}
+
+        {{plus-button onClick='newTimestampedMotif' class='add-motif-button'}}
+      </div>
+
+    {{/scrub-overlay}}
+  </div>
+  <div class="right-col">
+    {{#if currentVideoMotif}}
+
+      {{#if currentVideoMotif.motif}}
+
+        <div class="letterbox-container">
+          {{video-upload-player videoUpload=video.video_upload muted=muted playbackRate=1 play='true' startTimeMs=currentVideoMotif.start_time_ms endTimeMs=currentVideoMotif.end_time_ms muted=true}}
+          <a href="#" {{action "editCurrentVideoMotif"}} class='edit'>Edit <i class="icon-edit"></i></a>
+        </div>
+
+      {{/if}}
+      <div class="crumbs">
+
+        {{#if currentVideoMotif.motif}}
+
+          {{motif-breadcrumbs motif=currentVideoMotif.motif}}
+          <h2 class="current-motif-name">{{link-to currentVideoMotif.motif.name 'motifs.show' currentVideoMotif.motif.id}}</h2>
+
+        {{/if}}
+
+      </div>
+
+      {{#if currentVideoMotif.owner}}
+        <div class="crumbs bg-gray">
+          {{user-date user=currentVideoMotif.owner dateString=currentVideoMotif.createdDateHumanized}}
+        </div>
+      {{/if}}
+
+      {{#if editingCurrentVideoMotif}}
+
+        <div class="controls">
+          <a href="#" {{action "saveCurrentVideoMotif"}} class='btn-dark-blue save big'>Save</a>
+          <a href="#" {{action 'deleteCurrentVideoMotif'}} class='btn-blue'>Delete</a>
+          <a href="#" {{action "cancelEditCurrentVideoMotif"}} class='btn-pink'>Cancel</a>
+        </div>
+
+      {{/if}}
+
+    {{/if}}
+  </div>
+</div>
+
+<h4 class="general-motifs-title">General Motifs</h4>
+
+<div class="motif-items general-motifs">
+    {{#each video.generalVideoMotifs as |videoMotif|}}
+      <a href="#" {{action 'selectVideoMotif' videoMotif}} class='motif-item'>
+        <div class="title">
+          <div class="color-tag" style="border-top-color: {{videoMotif.motif.hex_color}};"></div>
+          <h3>{{videoMotif.motif.name}}</h3>
+        </div>
+        {{motif-letterbox-image motif=videoMotif.motif}}
+      </a>
+    {{/each}}
+    {{#if (eq video.generalVideoMotifs.length 0)}}
+      {{plus-button onClick='newGeneralMotif' class="add-motif-button no-motifs"}}
+    {{else}}
+      {{plus-button onClick='newGeneralMotif' class="add-motif-button"}}
+    {{/if}}
+</div>
+
+{{!-- Timed Motifs Panel --}}
+{{#if showAddTimedMotifs}}
+  {{#panel-medium}}
+    {{#panel-header onClose='closeNewTimedMotif' }}
+    {{/panel-header}}
+    <div class="results-container">
+      <div class="add-motif">
+        {{motif-input addMotifId='setDraftMotifCurrentVideoMotif' placeholder='Enter a film technique'}}
+      </div>
+    </div>
+  {{/panel-medium}}
+{{/if}}
+
+{{!-- General Motifs Panel --}}
+{{#if showAddGeneralMotifs}}
+  {{#panel-medium}}
+    {{#panel-header onClose='closeNewGeneralMotif' }}
+    {{/panel-header}}
+    <div class="results-container">
+      <div class="add-motif">
+        {{motif-input addMotifId='addGeneralMotif' placeholder='Enter a film technique'}}
+        <div class="motif-items">
+          {{#each video.generalVideoMotifs as |videoMotif|}}
+            <a href="#" {{action 'selectVideoMotif' videoMotif}} class='motif-item'>
+              <div class="title">
+                <div class="color-tag" style="border-top-color: {{videoMotif.motif.hex_color}};"></div>
+                <h3>{{videoMotif.motif.name}}</h3>
+              </div>
+              {{motif-letterbox-image motif=videoMotif.motif}}
+            </a>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  {{/panel-medium}}
+{{/if}}

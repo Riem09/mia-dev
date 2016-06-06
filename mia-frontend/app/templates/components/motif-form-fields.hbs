@@ -1,0 +1,44 @@
+{{#mia-input}}
+    <label for="motif[parent_id]">{{#if motif.parent}} Parent: {{motif.parent.name}} {{else}} Currently a Top Level Motif {{/if}}</label>
+    {{#if motif.parent}}
+      <a href="#" {{action 'removeParent'}}>Remove</a>
+    {{/if}}
+    {{input type='hidden' value=motif.parent.id name='motif[parent_id]'}}
+    {{#motif-add-opener done='setParentMotif' name='motif-parent' placeholder='Enter a new parent motif'}}
+      Edit Parent Motif
+    {{/motif-add-opener}}
+{{/mia-input}}
+
+{{#mia-input errors=errors.name}}
+    {{input name='motif[name]' value=motifName placeholder='Name'}}
+{{/mia-input}}
+
+{{#mia-input class='icon'}}
+    {{direct-upload-field name='motif[remote_icon_url]' label='Select Icon'}}
+    {{#if motif.icon_url}}
+        <p>
+            {{image-icon icon_url=motif.icon_url}}
+        </p>
+    {{/if}}
+{{/mia-input}}
+
+
+
+{{#mia-input errors=errors.remote_image_url class='image'}}
+    {{direct-upload-field name='motif[remote_image_url]' label='Select Image'}}
+    {{#if motif.image_url}}
+        <p class="letterbox-container">
+            {{bg-image imageUrl=motif.image_url}}
+        </p>
+    {{/if}}
+{{/mia-input}}
+
+{{#mia-input errors=errors.video_upload}}
+    {{direct-upload-field name='motif[video_upload_attributes][source_video]' label='Select Video'}}
+    {{#if motif.video_upload}}
+        <br />
+        <div class="letterbox-container">
+        {{video-upload-player videoUpload=motif.video_upload muted=true play=true}}
+        </div>
+    {{/if}}
+{{/mia-input}}

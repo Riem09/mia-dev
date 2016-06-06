@@ -1,0 +1,20 @@
+.color-tag {
+  border-top: 1.8rem solid;
+  border-right: 1.8rem solid transparent;
+  width: 0;
+  height: 0;
+
+  &.whitespace {
+    &:after {
+      background-color: $white;
+      content: '';
+      display: block;
+      position: absolute;
+      top: -1rem;
+      left: -0.5rem;
+      width: 3.0rem;
+      height: 0.2rem;
+      transform: rotate(-45deg);
+    }
+  }
+}

@@ -1,0 +1,8 @@
+<div class="letterbox-container">
+  {{#if motif.image_url}}
+    <div class="image" style={{motifImageStyle}}>&nbsp;</div>
+  {{else}}
+    <div class="image">&nbsp;</div>
+  {{/if}}
+  {{yield}}
+</div>

@@ -1,0 +1,20 @@
+input[type='button'],
+input[type='submit'] {
+  @include button($bg-color: $blue);
+
+  border: 1px solid $blue;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+textarea {
+  border: 1px solid $gray-light;
+  outline: none;
+  padding: 0.8rem;
+  transition: 0.25s;
+
+  &:focus {
+    box-shadow: 0px 0px 1px 1px $gray-light;
+  }
+}

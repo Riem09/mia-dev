@@ -1,0 +1,13 @@
+.rl-dropdown-toggle {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  background: $white;
+  display: block;
+  position: absolute;
+  right: 0;
+  text-align: left;
+  min-width: 10rem;
+  z-index: 3;
+}

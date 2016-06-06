@@ -1,0 +1,25 @@
+<div class="loading-container">
+    <p class="loading-content">
+        Loading...
+    </p>
+</div>
+<div class="video-container">
+  <video preload="none">
+    <source type='video/webm' />
+    <source type='video/mp4' />
+    </video>
+</div>
+{{#unless videoUpload.isReady}}
+  <div class="index">
+  </div>
+{{/unless}}
+{{#if overlay}}
+  <div class="play-overlay">
+    <i class="icon-play"></i>
+  </div>
+{{/if}}
+{{#unless videoUpload.isReady}}
+  <div class="message">
+    {{videoUpload.statusMessage}}
+  </div>
+{{/unless}}

@@ -1,0 +1,17 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Authentication": {
+    "Bucket": "mia-storage",
+    "Key": "auth-for-skyrocket-docker-registry"
+  },
+  "Image": {
+    "Name": "docker.skyrocket.is/mia/web:%BUILD_VERSION%",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "80"
+    }
+  ],
+  "Logging": "/var/log/nginx"
+}

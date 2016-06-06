@@ -1,0 +1,25 @@
+{{#panel-medium}}
+
+    {{panel-header onClose='back'}}
+
+    <div class="form-container">
+
+        <h1>Editing {{originalVideo.title}}</h1>
+
+        {{#mia-input}}
+            {{#if originalVideo.published }}
+                <a href="#" {{action 'unpublish'}} class='btn-orange'>Unpublish</a>
+            {{else}}
+                <a href="#" {{action 'publish'}} class='btn-green'>Publish</a>
+            {{/if}}
+        {{/mia-input}}
+
+        {{edit-video-form video=originalVideo updateVideo='updateVideo' errors=errors}}
+
+        <a href="#" {{action 'onDelete'}}>Delete</a>
+
+    </div>
+
+{{/panel-medium}}
+
+{{outlet}}

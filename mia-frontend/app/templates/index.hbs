@@ -1,0 +1,38 @@
+<div class="index mia-main">
+  <video autoplay="autoplay" loop="loop">
+    <source type="video/mp4" src="/images/mia-index-bg.mp4">
+    <source type="video/webm" src="/images/videos/mia-index-bg.webm">
+  </video>
+  <div class="search-bar">
+    <ul class="search-motifs">
+      {{#each motifs as |motif|}}
+        <li>{{search/motif-item motif=motif onRemove='removeMotif'}}</li>
+      {{/each}}
+      <li>
+        <a href="#" {{action 'doSearch'}} class="do-search">
+          <i class="icon-go"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="results-container">
+    <div class="add-motif">
+      {{motif-input addMotifId='addMotif' placeholder='Enter a film technique' autoWriting=true}}
+    </div>
+  </div>
+</div>
+
+
+{{!-- Outside of the mia-main because it animates independantly of the main content --}}
+{{#if user}}
+  {{#rl-dropdown-container class="dropdown"}}
+    {{#rl-dropdown-toggle tagName='a'}}
+      {{index-avatar action="toggleHeaderShow" avatar_url=avatar_url}}
+    {{/rl-dropdown-toggle}}
+    {{#rl-dropdown tagName="ul" class="dropdown-menu top-level-nav-dropdown-menu" closeOnChildClick="a:link"}}
+      <li>{{#link-to 'users.show' user.id}}My Videos{{/link-to}}</li>
+      <li>{{link-to 'Edit Profile' 'users.edit'}}</li>
+      <li><a {{action 'signOut'}} class='sign-out'>Sign Out</a></li>
+    {{/rl-dropdown}}
+  {{/rl-dropdown-container}}
+{{/if}}

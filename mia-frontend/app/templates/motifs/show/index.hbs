@@ -1,0 +1,81 @@
+<div class="motif-show">
+  <div class="motif-splash">
+    <div class="header">
+      <div class="clearfix">
+        <div class="color-tag" style="border-top-color: {{model.hex_color}};"></div>
+        <h1>{{model.name}}</h1>
+        <div class="actions">
+          {{#link-to 'motifs.show.edit' model.id class='edit' }}Edit<i class="icon-edit"></i>{{/link-to}}
+        </div>
+      </div>
+    </div>
+
+    {{motif-letterbox motif=model}}
+
+    <div class="footer">
+      <div class="icon">
+        <img src= {{model.icon_url}}>
+      </div>
+    </div>
+  </div>
+
+  <h4>{{model.children.length}} Sub-motifs</h4>
+  <div class="motif-items clearfix">
+    {{#each model.children as |child|}}
+      <div class="motif-item">
+        {{#link-to 'motifs.show' child.id}}
+          <div class="title">
+            <div class="color-tag" style="border-top-color: {{child.hex_color}};"></div>
+            <h3>{{child.name}}</h3>
+          </div>
+          {{motif-letterbox-image motif=child}}
+        {{/link-to}}
+      </div>
+    {{/each}}
+    {{#if (eq model.children.length 0)}}
+      {{#link-to 'motifs.new' model.id class='plus-button no-motifs' }}
+        <i class="icon-add-button-plus"></i>
+      {{/link-to}}
+    {{else}}
+      {{#link-to 'motifs.new' model.id class='plus-button' }}
+        <i class="icon-add-button-plus"></i>
+      {{/link-to}}
+    {{/if}}
+  </div>
+
+  <h4>{{model.related_motifs.length}} Related Motifs</h4>
+  <div class="motif-items clearfix">
+    {{#if (eq model.related_motifs.length 0)}}
+      {{#link-to 'motifs.show.related-motifs.new' model.id class='plus-button no-motifs add-related-motif' }}
+        <i class="icon-add-button-plus"></i>
+      {{/link-to}}
+    {{else}}
+      {{#each model.related_motifs as |related_motif|}}
+        <div class="motif-item">
+          {{#link-to 'motifs.show' related_motif.motif2.id }}
+            <div class="title">
+              <div class="color-tag" style="border-top-color: {{related_motif.motif2.hex_color}};"></div>
+              <h3>{{related_motif.motif2.name}}</h3>
+            </div>
+            {{motif-letterbox-image motif=related_motif.motif2}}
+          {{/link-to}}
+          <a href="#" {{action 'removeRelatedMotif' related_motif}} class='remove-related-motif'>Remove</a>
+          {{#if (eq related_motif model.related_motifs.lastObject)}}
+            {{#link-to 'motifs.show.related-motifs.new' model.id class='plus-button add-related-motif' }}
+              <i class="icon-add-button-plus"></i>
+            {{/link-to}}
+          {{/if}}
+        </div>
+      {{/each}}
+    {{/if}}
+  </div>
+
+  <h4>Featured in {{model.video_motifs.length}} Videos</h4>
+  <div class="video-list-items">
+    {{#each model.video_motifs as |vm|}}
+      {{video-list-item video=vm.video}}
+    {{/each}}
+  </div>
+
+  {{outlet}}
+</div>

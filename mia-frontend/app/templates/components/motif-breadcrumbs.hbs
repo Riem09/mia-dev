@@ -1,0 +1,4 @@
+<h3>{{link-to 'Home' 'motifs'}} <i class="icon-arrow-small"></i></h3>
+{{#each motif.ancestors as |anc|}}
+    <h3>{{link-to anc.name 'motifs.show' anc.id}} <i class="icon-arrow-small"></i></h3>
+{{/each}}

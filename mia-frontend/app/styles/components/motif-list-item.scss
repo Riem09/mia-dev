@@ -1,0 +1,21 @@
+.motif-list-item {
+  position: relative;
+
+  .title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: $margin-md;
+    z-index: 3;
+
+    .color-tag {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    h1 {
+      margin: 0;
+      display: inline-block;
+    }
+  }
+}

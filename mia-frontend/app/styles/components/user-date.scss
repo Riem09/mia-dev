@@ -1,0 +1,16 @@
+.user-date {
+  @include user-info-span();
+
+  color: $gray-dark;
+  line-height: 1.6;
+  position: relative;
+  .user-avatar .user-image {
+    width: 3.2rem;
+    height: 3.2rem;
+    margin-right: $margin-sm;
+  }
+  .date-info {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}

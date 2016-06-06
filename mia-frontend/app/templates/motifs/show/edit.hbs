@@ -1,0 +1,14 @@
+{{#panel-medium}}
+    {{panel-header onClose='back'}}
+
+    <div class="form-container">
+        <h1>Editing {{motif.name}}</h1>
+
+        {{edit-motif-form motif=motif updateMotif='updateMotif' errors=errors}}
+
+        <p>
+            <a href="#" {{action 'deleteMotif' motif}} class='delete'>Delete Motif</a>
+        </p>
+    </div>
+
+ {{/panel-medium}}

@@ -1,0 +1,12 @@
+.user-avatar {
+  display: inline-block;
+  .user-image{
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    display: inline-block;
+    width: 2.4rem;
+    height: 2.4rem;
+    vertical-align: middle;
+  }
+}

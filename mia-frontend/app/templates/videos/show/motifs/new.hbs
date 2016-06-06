@@ -1,0 +1,25 @@
+{{#panel-medium}}
+    <a href="#" {{action "back"}}>Cancel</a>
+    {{#if motif}}
+        <a href="#" {{action "saveVideoMotif"}}>Save</a>
+    {{/if}}
+    <div class="row">
+        <div class="left-col">
+            {{#video-player video=video currentTime=currentTime currentFraction=currentFraction}}
+                {{#if motif}}
+                    <div class="scrubber">
+                        {{scrub-handle fraction=startFraction upperLimit=endFraction}}
+                        {{scrub-handle fraction=endFraction lowerLimit=startFraction}}
+                    </div>
+                {{/if}}
+            {{/video-player}}
+        </div>
+        <div class="right-col">
+            {{#if motif}}
+                {{motif.name}}
+            {{else}}
+                {{motif-input addMotifId='setMotif'}}
+            {{/if}}
+        </div>
+    </div>
+{{/panel-medium}}

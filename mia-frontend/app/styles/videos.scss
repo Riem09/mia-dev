@@ -1,0 +1,17 @@
+.video-list-items {
+  @include clearfix();
+
+  .video-list-item {
+    display: block;
+    float: left;
+    width: 50%;
+
+    .letterbox-container {
+      @include mia-gradient(top, bottom, rgba($black, 0), 5%, rgba($black, 0.6), 60%);
+    }
+  }
+}
+
+.video-show-title {
+    margin: $margin-sm $margin-md;
+}

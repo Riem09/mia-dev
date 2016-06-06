@@ -1,0 +1,28 @@
+.letterbox-container {
+  @include mia-gradient(top, bottom, rgba($black, 0.6), rgba($black, 0), 10%, 50%);
+
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+
+  &:before {
+    z-index: 1;
+  }
+
+  .video-upload-player, video, .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+  }
+
+  .image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}

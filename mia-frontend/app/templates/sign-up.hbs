@@ -1,0 +1,34 @@
+{{top-level-nav}}
+<div class="form-container mia-main">
+
+    <h1>Sign Up</h1>
+
+    {{#if user}}
+        Thank you for signing up!  Please check your email to confirm your account.
+    {{else}}
+
+    <form {{action "signUp" on="submit"}} class='sign-up'>
+
+                {{#mia-input errors=errors.first_name}}
+                    {{input value=first_name name='user[first_name]' placeholder='First name'}}
+                {{/mia-input}}
+                {{#mia-input errors=errors.last_name}}
+                    {{input value=last_name name='user[last_name]' placeholder='last name'}}
+                {{/mia-input}}
+                {{#mia-input errors=errors.email}}
+                {{input value=email name='user[email]' placeholder='email'}}
+                {{/mia-input}}
+                {{#mia-input errors=errors.password}}
+                    {{input value=password name='user[password]' type='password' placeholder='password'}}
+                {{/mia-input}}
+                {{#mia-input errors=errors.password_confirmation}}
+                    {{input value=password_confirmation name='user[password_confirmation]' type='password' placeholder='password confirmation'}}
+                {{/mia-input}}
+
+        <input type="submit" value="Sign Up" />
+
+    </form>
+
+    {{/if}}
+
+</div>

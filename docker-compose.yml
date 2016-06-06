@@ -1,0 +1,38 @@
+web:
+  build: ./mia-frontend
+  volumes:
+    - ./mia-frontend:/var/www/apps/mia.io
+    - /var/www/apps/mia.io/node_modules
+    - /var/www/apps/mia.io/bower_components
+    - ./mia-frontend/.docker/nginx.conf:/etc/nginx/sites-enabled/default.conf
+    - ./mia-frontend/.docker/nginx.conf:/etc/nginx/sites-available/default.conf
+    - ./mia-frontend/.docker/nginx.conf:/etc/nginx/conf.d/default.conf
+  environment:
+    VIRTUAL_HOST: mia.docker
+    VIRTUAL_PORT: 4200
+  command: npm run start
+
+api:
+  build: ./mia-backend
+  links:
+    - db
+  volumes:
+   - ./mia-backend:/var/www/apps/mia.io
+   - ./mia-backend/.docker/apache.conf:/etc/apache2/sites-enabled/000-default.conf
+  environment:
+    VIRTUAL_HOST: api.mia.docker
+    VIRTUAL_PORT: 3000
+    DB_HOST: db
+    DB_NAME: mia_dev
+    DB_USERNAME: mia_development
+    DB_PASSWORD: verysecurepassword
+  command: bundle exec rails s -p 3000 -b '0.0.0.0'
+
+db:
+  image: postgres
+  ports:
+    - "5432:5432"
+  environment:
+    POSTGRES_DB: mia_dev
+    POSTGRES_USER: mia_development
+    POSTGRES_PASSWORD: verysecurepassword

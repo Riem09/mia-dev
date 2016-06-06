@@ -1,0 +1,95 @@
+html {
+  font-size: 62.5%;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  color: $charcoal;
+  font-family: $soleil, sans-serif;
+  font-size: 1.6rem;
+}
+
+body > .ember-view {
+  height: 100%;
+}
+
+a {
+  color: $gray-light;
+  text-decoration: none;
+  transition: 0.25s;
+
+  &:hover {
+    color: $active-nav-color;
+  }
+}
+
+h1 {
+  @include h1();
+}
+
+h2 {
+  @include h2();
+}
+
+h2.sub {
+  @include h2-sub();
+}
+
+h3 {
+  @include h3();
+}
+
+h4 {
+  @include h4();
+}
+
+.clearfix {
+  @include clearfix();
+}
+
+.row {
+  @include row();
+}
+
+.half {
+  @include span-columns(6);
+  @include omega(2n);
+}
+
+.third {
+  @include span-columns(4);
+  @include omega(3n);
+}
+
+.quarter {
+  @include span-columns(3);
+  @include omega(4n);
+}
+
+.form-container {
+  @include outer-container(40rem);
+}
+
+@mixin vertical-align($position: relative) {
+  position: $position;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin ember-action {
+  cursor: pointer;
+}
+
+[data-ember-action] {
+  cursor: pointer;
+}
+
+
+.mia-main {
+    z-index: index($body-elements,main);
+}

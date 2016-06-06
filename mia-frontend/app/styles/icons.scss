@@ -1,0 +1,77 @@
+@font-face {
+  font-family: $icomoon;
+  font-style: normal;
+  font-weight: normal;
+  src: url('/fonts/icomoon.eot?7jvi3s');
+  src: url('/fonts/icomoon.eot?7jvi3s#iefix') format('embedded-opentype'),
+    url('/fonts/icomoon.ttf?7jvi3s') format('truetype'),
+    url('/fonts/icomoon.woff?7jvi3s') format('woff'),
+    url('/fonts/icomoon.svg?7jvi3s#icomoon') format('svg');
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: $icomoon;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1em;
+  speak: none;
+  text-transform: none;
+}
+
+.icon-logo:before {
+  content: "\e800";
+}
+.icon-add-button-plus:before {
+  content: "\e801";
+}
+.icon-add:before {
+  content: "\e802";
+}
+.icon-arrow-small:before {
+  content: "\e803";
+}
+.icon-close-small:before {
+  content: "\e804";
+}
+.icon-close:before {
+  content: "\e805";
+}
+.icon-discover:before {
+  content: "\e806";
+}
+.icon-edit:before {
+  content: "\e807";
+}
+.icon-generic:before {
+  content: "\e808";
+}
+.icon-go:before {
+  content: "\e809";
+}
+.icon-timed:before {
+  content: "\e810";
+}
+.icon-add-circle:before {
+  content: "\e811";
+}
+.icon-headphone:before {
+  content: "\e80a";
+}
+.icon-motifs:before {
+  content: "\e80b";
+}
+.icon-play:before {
+  content: "\e80c";
+}
+.icon-profile:before {
+  content: "\e80d";
+}
+.icon-screen:before {
+  content: "\e80e";
+}
+.icon-search:before {
+  content: "\e80f";
+}

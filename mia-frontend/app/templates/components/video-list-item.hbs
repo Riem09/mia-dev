@@ -1,0 +1,21 @@
+{{#link-to videoShowPath video.id}}
+    <div class="letterbox-container">
+        {{#scrub-overlay scrubSelector='.gradient-timeline' durationS=video.video_upload.durationS seekTimeS=vupSeekTime stopEvents=true}}
+            {{video-upload-player videoUpload=video.video_upload muted=muted playbackRate=playbackRate startTimeMs=video.combined_start_time endTimeMs=video.combined_end_time currentTime=currentTime play=true seekTime=vupSeekTime currentFraction=vupFraction muted=true playScroll=true}}
+            {{#if timeline}}
+              {{gradient-timeline seekTimeFraction=vupFraction}}
+            {{/if}}
+        {{/scrub-overlay}}
+    </div>
+    <div class="meta-data">
+        <div class="icons">
+        {{#each video.motifs_with_icon as |motif|}}
+            {{#link-to 'motifs.show' motif.id}}<img src="{{motif.icon_url}}" />{{/link-to}}
+        {{/each}}
+        </div>
+        <h2>{{video.title}}</h2>
+        <div class='duration'>
+            {{videoDuration}}
+        </div>
+    </div>
+{{/link-to}}

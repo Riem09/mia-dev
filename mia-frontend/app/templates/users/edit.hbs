@@ -1,0 +1,49 @@
+<div class="form-container">
+
+    <h1>Edit Profile</h1>
+
+    <form {{action 'submit' on='submit'}} class='edit-user-form' autocomplete='off'>
+
+        {{#mia-input error=errors.first_name}}
+            {{input name='user[first_name]' value=user.first_name}}
+        {{/mia-input}}
+
+        {{#mia-input error=errors.last_name}}
+            {{input name='user[last_name]' value=user.last_name}}
+        {{/mia-input}}
+
+        {{#mia-input error=errors.email}}
+            {{input name='user[email]' value=user.email autocomplete='off'}}
+        {{/mia-input}}
+
+        {{#mia-input}}
+            {{direct-upload-field name='user[remote_avatar_url]' label='Select an Avatar'}}
+        {{/mia-input}}
+
+        {{#unless changingPassword}}
+            <p>
+                <a href="#" {{action 'toggleChangePassword'}}>Change Password</a>
+            </p>
+        {{/unless}}
+
+        {{#if changingPassword}}
+            {{#mia-input errors=errors.password}}
+                {{input name='user[password]' type='password'}}
+            {{/mia-input}}
+            {{#mia-input}}
+                {{input name='user[password_confirmation]' type='password'}}
+            {{/mia-input}}
+        {{/if}}
+
+        <p>
+            To save, you must enter your current password.
+            {{#mia-input error=errors.current_password}}
+                {{input name='user[current_password]' type='password'}}
+            {{/mia-input}}
+        </p>
+
+        {{direct-upload-submit value='Save'}}
+
+    </form>
+
+</div>

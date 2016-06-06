@@ -1,0 +1,9 @@
+{{top-level-nav}}
+
+<div class="video-list-items mia-main">
+  {{#each pagedContent as |videoMotif|}}
+    {{video-motif-item videoMotif=videoMotif timeline=false muted=true playScroll=true}}
+  {{/each}}
+</div>
+{{reload-on-scroll loadNext=(action 'loadNext')}}
+{{outlet}}

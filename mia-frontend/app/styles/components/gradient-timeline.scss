@@ -1,0 +1,15 @@
+.gradient-timeline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4.8rem;
+  text-align: left;
+  width: 100%;
+
+  .timeline {
+    background: linear-gradient(to right, $green, $blue, $purple);
+    display: inline-block;
+    height: 4px;
+    margin-top: 3.2rem;
+  }
+}

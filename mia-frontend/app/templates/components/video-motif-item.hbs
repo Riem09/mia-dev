@@ -1,0 +1,22 @@
+<div class="letterbox-container">
+    {{#link-to 'videos.show' videoMotif.video.id}}
+        {{#scrub-overlay scrubSelector='.gradient-timeline' durationS=videoMotif.video.video_upload.durationS seekTimeS=vupSeekTime stopEvents=true}}
+          {{video-upload-player videoUpload=videoMotif.video.video_upload startTimeMs=videoMotif.start_time_ms endTimeMs=videoMotif.end_time_ms play=true playbackRate=0.5 seekTime=vupSeekTime currentFraction=vupFraction playScroll=true}}
+            {{#if timeline}}
+              {{gradient-timeline seekTimeFraction=vupFraction}}
+            {{/if}}
+        {{/scrub-overlay}}
+    {{/link-to}}
+</div>
+
+<div class="title">
+  <p>
+    {{#each videoMotif.motif.ancestors as |ancestor|}}
+      {{link-to ancestor.name 'motifs.show' ancestor.id}} <i class="icon-arrow-small"></i>
+    {{/each}}
+  </p>
+  <div class="color-tag" style="border-top-color: {{videoMotif.motif.hex_color}};"></div>
+  <h4>{{videoMotif.motif.name}}</h4>
+</div>
+
+{{yield}}

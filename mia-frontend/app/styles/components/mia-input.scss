@@ -1,0 +1,23 @@
+.mia-input {
+  margin-bottom: 1.6rem;
+
+  &.has-error {
+    ul {
+      color: $red;
+    }
+
+    input {
+      box-shadow: 0 0 1px 1px $pink;
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  input {
+    width: 100%;
+  }
+}

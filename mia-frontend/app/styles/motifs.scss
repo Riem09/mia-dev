@@ -1,0 +1,25 @@
+.motifs-container {
+  .motif-search-bar {
+    padding: $margin-sm $margin-md;
+
+    .motif-breadcrumbs {
+      float: left;
+    }
+
+    a {
+      &:last-child {
+        @include h4();
+        margin: 0;
+        float: right;
+        text-transform: uppercase;
+      }
+    }
+
+  }
+
+  .results-container {
+    .add-motif {
+      z-index: index($video-upload, search);
+    }
+  }
+}

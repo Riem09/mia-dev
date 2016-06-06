@@ -1,0 +1,14 @@
+.motif-breadcrumbs {
+  h3 {
+    display: inline;
+    margin: 0;
+  }
+
+  &, .icon-arrow-small {
+    color: $gray-light;
+  }
+
+  .icon-arrow-small {
+    font-size: 1.2rem;
+  }
+}

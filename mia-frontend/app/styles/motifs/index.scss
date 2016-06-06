@@ -1,0 +1,13 @@
+.motif-list-items {
+  @include clearfix();
+
+  .motif-list-item {
+    display: block;
+    float: left;
+    width: 50%;
+
+    > a {
+      display: block;
+    }
+  }
+}

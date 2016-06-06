@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "postinstall": "npm install -g bower"
+  },
+  "devDependencies": {
+    "bower": "*"
+  },
+  "cacheDirectories": ["node_modules", "bower_components", "frontend/bower_components", "frontend/node_modules"]
+}

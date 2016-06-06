@@ -1,0 +1,75 @@
+.search-bar {
+  padding: 1.9rem $margin-md; //padding top matches header padding
+  z-index: index($index-elements, button);
+
+  .search-motifs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: inline-block;
+      vertical-align: middle;
+
+      &.num-of-results {
+        float: right;
+        position: relative;
+        top: 5px;
+
+        h4 {
+          color: $gray-light;
+          margin: 0;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+
+  a {
+    @include h3();
+
+    color: $gray-dark;
+
+    &:hover {
+      color: $blue;
+    }
+
+    &.do-search {
+      font-size: 2.4rem;
+    }
+  }
+}
+
+.results-container {
+  min-height: 100%;
+  position: relative;
+
+  &:before {
+    background: linear-gradient(to right, #58d68d, $blue, $purple);
+    content: "";
+    display: block;
+    height: 3px;
+  }
+
+  .add-motif {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1.1rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+
+    input {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      color: $charcoal;
+      font-size: 7.0rem;
+      font-weight: $bold;
+      opacity: 0.54;
+      outline: none;
+    }
+  }
+}

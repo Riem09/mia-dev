@@ -1,0 +1,24 @@
+.video-motif-item {
+  position: relative;
+
+  .title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: $margin-md;
+    z-index: 3;
+
+    h4 {
+      display: inline-block;
+      margin: 0;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+
+    .color-tag {
+      display: inline-block;
+    }
+  }
+}

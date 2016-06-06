@@ -1,0 +1,41 @@
+@mixin button($bg-color: $button-color) {
+  outline: none;
+  border: none;
+  background-color: $bg-color;
+  color: white;
+  padding: 0.5rem;
+  transition: 0.25s;
+  &:hover {
+    background-color: darken($bg-color, 5);
+    color: white;
+  }
+  &[disabled] {
+    background-color: lighten($bg-color, 10);
+  }
+  &.full {
+    width: 100%;
+  }
+  &.big {
+    @include h2-sub;
+    padding: $margin-md;
+  }
+}
+
+.btn {
+  @include button();
+}
+.btn-pink {
+  @include button($bg-color: $pink);
+}
+.btn-green {
+  @include button($bg-color: $green);
+}
+.btn-orange {
+  @include button($bg-color: $orange);
+}
+.btn-dark-blue {
+  @include button($bg-color: $active-nav-color);
+}
+.btn-blue {
+  @include button($bg-color: $blue);
+}
